@@ -1,0 +1,33 @@
+
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+# New Routes for Login Activity
+GET         /                                 controllers.HomeController.index()
+POST        /signup                           controllers.LoginController.signUp
++nocsrf
+POST        /signin                           controllers.LoginController.signIn
+GET         /file-server/list-objects         controllers.FileController.listObjects(username:String)
+GET         /file-server/get-object           controllers.FileController.getObject(key:String)
++nocsrf
+POST        /file-server/upload-object        controllers.FileController.uploadObject
++nocsrf
+POST        /file-server/delete-object               controllers.FileController.deleteObject
++nocsrf
+POST        /file-server/lock-object                 controllers.FileController.lockObject
++nocsrf
+POST        /file-server/lock-status                 controllers.FileController.lockStatus
+GET         /file-server/access-request              controllers.FileController.sendAccessRequest(path:String,username:String,access:String,owner:String)
+GET         /file-server/requested-access            controllers.FileController.getAccessRequests(username:String)
+GET         /file-server/access-approval             controllers.FileController.getAccessWaitingForApprovals(owner:String)
++nocsrf
+POST        /file-server/request-status              controllers.FileController.setAccessRequestsStatus
++nocsrf
+POST        /file-server/delete-record               controllers.FileController.deleteRecord
+GET         /file-server/file-accessed-others        controllers.FileController.getAccessedRecords(username:String)
+GET         /logout                                  controllers.FileController.logOut(username:String)
+
+
+
